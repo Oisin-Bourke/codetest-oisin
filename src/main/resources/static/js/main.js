@@ -8,4 +8,10 @@ app.controller('studentCtrl', function($scope, $location, $http) {
 		$scope.students = response.data;
 	});
 
+	$http.get('http://localhost:8080/api/getSubjects')
+		.then(function(response) {
+			$scope.subjects = response.data;
+		});
+
 });
+

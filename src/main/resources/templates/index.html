@@ -39,6 +39,35 @@
 			</tr>
 		</table>
 
+		<br>
+
+		<table class="table">
+			<tr>
+				<th>Subject ID</th>
+				<th>Subject Name</th>
+			</tr>
+			<tr ng-repeat="subject in subjects">
+				<td>{{subject.subjectID}}</td>
+				<td>{{subject.subjectName}}</td>
+				<td></td>
+			</tr>
+		</table>
+
+		<form name="myForm" ng-submit="assignStudentSubject()">
+			<label for="Student">Select Student</label>
+			<select name="Student" id="Student" ng-model="students">
+				<option ng:repeat="student in students" value="{{student.studentID}}">
+					{{student.firstName}} - {{student.lastName}}
+				</option>
+			</select>
+			<label for="Subject">Select Subject</label>
+			<select name="Subject" id="Subject" ng-model="subjects">
+				<option ng:repeat="subject in subjects" value="{{subject.subjectID}}">
+					{{subject.subjectName}}
+				</option>
+			</select>
+			<button type="submit">Assign Subject</button>
+		</form>
 	</div>
 
 </body>
