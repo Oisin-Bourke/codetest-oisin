@@ -4,12 +4,14 @@
 
 Greetings Brightflag Software Engineer! 
 
-Just to note, I had not previously used Spring JDBC DATA and had some difficulty mapping my objects to the database as I would have liked.    
+Just to note, I had not previously used Spring Boot and had some difficulty mapping my objects to the database as I would have liked.    
 
 I had intended to follow the Domain Driven Design (DDD) approach, as suggested here ['Spring Data JDBC, References, and Aggregates'](https://spring.io/blog/2018/09/24/spring-data-jdbc-references-and-aggregates), 
-although this was not successful without using the `CrudRepository` interface (which would have required a different architecture I believe).
+although this was not successful without using the Spring Data `CrudRepository` interface (which would have required a different architecture I believe).
 
 The application works but could have ben much better. Any feedback would be greatly appreciate!
+
+*I have not added any dependencies.
 
 > The final h2 schema is below:
 ![schema erd](src/main/resources/images/bf_code_test_erd.png)

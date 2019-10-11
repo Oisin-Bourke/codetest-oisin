@@ -1,5 +1,8 @@
 package com.brightflag.domain;
 
+/**
+ * 'Joining' class that handles student subject enrollments
+ */
 public class Student_Subject {
 
     private Integer student;
@@ -14,6 +17,7 @@ public class Student_Subject {
         this.subject = subject;
     }
 
+    //Getters and setters
     public Integer getSubject() {
         return subject;
     }

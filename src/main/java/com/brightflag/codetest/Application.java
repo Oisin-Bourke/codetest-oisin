@@ -6,11 +6,11 @@ import com.brightflag.domain.Subject;
 import com.brightflag.repository.StudentRepository;
 import com.brightflag.repository.Student_SubjectRepository;
 import com.brightflag.repository.SubjectRepository;
-import org.h2.tools.Server;
+//import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
@@ -29,7 +29,6 @@ public class Application {
 	private Student_SubjectRepository student_subjectRepository;
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(Application.class, args);
 	}
 
@@ -40,13 +39,18 @@ public class Application {
 	 * @throws SQLException
 	 */
 
+	/*
 	@Bean(initMethod = "start", destroyMethod = "stop")
 	public Server h2Server() throws SQLException {
 		return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092");
 	}
 
+	 */
+
+
+
 	/**
-	 * Initialize further data
+	 * Initialize data
 	 */
 	@PostConstruct
 	public void init() {
@@ -84,7 +88,6 @@ public class Application {
 
 		//Get subjects for saved student larry
 		List<Subject> subjects = subjectRepository.findAllByStudentId(savedLarry.getStudentID());
-
 		for(Subject s : subjects){ System.out.println(s); }
 	}
 

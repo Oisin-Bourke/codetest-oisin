@@ -3,7 +3,9 @@ package com.brightflag.service;
 import com.brightflag.domain.Student_Subject;
 import com.brightflag.repository.Student_SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class Student_SubjectService {
 
     @Autowired

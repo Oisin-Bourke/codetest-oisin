@@ -1,6 +1,5 @@
 package com.brightflag.codetest;
 
-import com.brightflag.domain.Exam;
 import com.brightflag.domain.Student;
 import com.brightflag.domain.Student_Subject;
 import com.brightflag.domain.Subject;
@@ -13,9 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -59,12 +57,14 @@ public class ApplicationTests {
 		assertThat(savedJavaScript).isNotNull();
 
 		//2 Create new student then persist and test
+
 		Student ciaran = new Student(15,"Ciaran","Flood");
 		studentRepository.insert(ciaran);
 		Student savedCiaran = studentRepository.findById(ciaran.getStudentID());
 		assertThat(savedCiaran).isNotNull();
 
 		//3 Create two new student_subject 'enrollments' in joining table then persist and test
+
 		Student_Subject enrollment1 = new Student_Subject(savedCiaran.getStudentID(),savedJava.getSubjectID());
 		student_subjectRepository.insert(enrollment1);
 		Student_Subject savedEnrollment1 = student_subjectRepository.findById(enrollment1);
@@ -75,36 +75,11 @@ public class ApplicationTests {
 		Student_Subject savedEnrollment2 = student_subjectRepository.findById(enrollment2);
 		assertThat(savedEnrollment2).isNotNull();
 
+		//4) Check size of students subject list as expected
+
 		List<Subject> subjects = subjectRepository.findAllByStudentId(savedCiaran.getStudentID());
-
-		for(Subject s : subjects){
-			System.out.println(s);
-		}
-
-		/*
-		for (Student s : studentRepository.getStudents()){
-			System.out.println(subjectRepository.findAllById(s.getStudentID()));
-		}
-		*/
-
-		/*
-		Set<Integer> subjectIds = savedStudent.getSubjectIds();
-
-		System.out.println(subjectIds);
-
-		for (Integer id : subjectIds){
-
-			System.out.println(id);
-
-		}
-
-		 */
-
-		//System.out.println(subjectRepository.findAllById(savedStudent.getStudentID()));
-
-		//assertThat(savedStudent.getStudent_subjectList()).isNotNull();
-
-		//assertThat(savedStudent.getStudent_subjectList()).size().isEqualTo(1);
+		savedCiaran.setSubjects(subjects);
+		assertThat(savedCiaran.getSubjects().size()).isEqualTo(2);
 	}
 
 }

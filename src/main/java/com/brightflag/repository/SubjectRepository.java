@@ -3,8 +3,6 @@ package com.brightflag.repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -28,6 +26,11 @@ public class SubjectRepository {
         }
     }
 
+    public int insert(Subject subject) {
+        return jdbcTemplate.update("insert into subject (subjectID, subjectName ) " + "values(?, ?)",
+                new Object[] { subject.getSubjectID(), subject.getSubjectName() });
+    }
+
     public List<Subject> getSubjects() {
         return jdbcTemplate.query("SELECT * FROM subject;", new SubjectRepository.SubjectRowMapper());
 
@@ -47,12 +50,6 @@ public class SubjectRepository {
         return jdbcTemplate.queryForObject("select * from subject where subjectID=?", new Object[] { id },
                 new BeanPropertyRowMapper<Subject>(Subject.class));
     }
-
-    public int insert(Subject subject) {
-        return jdbcTemplate.update("insert into subject (subjectID, subjectName ) " + "values(?, ?)",
-                new Object[] { subject.getSubjectID(), subject.getSubjectName() });
-    }
-
 
 
 }

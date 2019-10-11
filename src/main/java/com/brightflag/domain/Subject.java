@@ -14,6 +14,7 @@ public class Subject {
 		this.subjectName = subjectName;
 	}
 
+	//Getters and setters
 	public Integer getSubjectID() {
 		return subjectID;
 	}

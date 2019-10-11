@@ -3,14 +3,11 @@ package com.brightflag.repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
-import com.brightflag.domain.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
 import com.brightflag.domain.Student;
 
 @Repository
@@ -22,7 +19,6 @@ public class StudentRepository {
 	@Autowired
 	SubjectRepository subjectRepository;
 
-
 	class StudentRowMapper implements RowMapper<Student> {
 		@Override
 		public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -30,6 +26,7 @@ public class StudentRepository {
 			student.setStudentID(rs.getInt("studentID"));
 			student.setFirstName(rs.getString("firstName"));
 			student.setLastName(rs.getString("lastName"));
+			//add method here to get exams...
 			student.setSubjects(subjectRepository.findAllByStudentId(rs.getInt("studentID")));
 			return student;
 		}

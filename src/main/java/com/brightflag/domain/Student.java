@@ -2,12 +2,10 @@ package com.brightflag.domain;
 
 import com.brightflag.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Student {
 
@@ -38,6 +36,7 @@ public class Student {
 		this.subjects = subjects;
 	}
 
+	//Getters and setters
 	public Integer getStudentID() {
 		return studentID;
 	}
@@ -78,37 +77,6 @@ public class Student {
 		this.subjects = subjects;
 	}
 
-	/*
-	public Set<Student_Subject> getStudent_subjectList() {
-
-		return student_subjectList = subjectRepository.findAllByStudentId(studentID);
-	}
-
-	public void setStudent_subjectList(Set<Student_Subject> student_subjectList) {
-		this.student_subjectList = student_subjectList;
-	}
-
-	public void addSubject(Subject subject){
-		//this.student_subjectList.add(createStudent_Subject(subject));
-		//this.student_subjectList.add(new Student_Subject(subject.getSubjectID()));
-	}
-
-	public Set<Integer> getSubjectIds(){
-		return this.student_subjectList.stream()
-				.map(Student_Subject::getSubject)
-				.collect(Collectors.toSet());
-	}
-
-	/*
-	private Student_Subject createStudent_Subject(Subject subject) {
-		Assert.notNull(subject, "Subject must not be null");
-		Assert.notNull(subject.getSubjectID(),"Subject ID must not be null" );
-		Student_Subject student_subject = new Student_Subject();
-		student_subject.setSubject(subject.getSubjectID());
-		return student_subject;
-	}
-	 */
-
 	@Override
 	public String toString() {
 		return "Student{" +
@@ -117,4 +85,5 @@ public class Student {
 				", lastName='" + lastName + '\'' +
 				'}';
 	}
+
 }
