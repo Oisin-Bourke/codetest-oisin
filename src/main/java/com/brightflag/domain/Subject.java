@@ -5,6 +5,15 @@ public class Subject {
 	private Integer subjectID;
 	private String subjectName;
 
+	public Subject(){
+
+	}
+
+	public Subject(Integer subjectID, String subjectName) {
+		this.subjectID = subjectID;
+		this.subjectName = subjectName;
+	}
+
 	public Integer getSubjectID() {
 		return subjectID;
 	}

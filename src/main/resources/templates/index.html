@@ -5,7 +5,6 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <title>Brightflag Code Test</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -14,61 +13,72 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
 <script src="js/main.js"></script>
-
 </head>
 <body ng-app="bfCodeTest">
-
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">BF Code Test</a>
 	</nav>
-
 	<div ng-controller="studentCtrl" class="container">
 
-		<table class="table">
+		<table class="table table-striped">
+			<thead>
 			<tr>
 				<th>Student ID</th>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Subjects</th>
 			</tr>
+			</thead>
+			<tbody>
 			<tr ng-repeat="student in students">
 				<td>{{student.studentID}}</td>
 				<td>{{student.firstName}}</td>
 				<td>{{student.lastName}}</td>
-				<td></td>
+				<td>
+					<ul ng-repeat = "subject in student.subjects">
+						<li>{{subject.subjectName}}</li>
+					</ul>
+				</td>
 			</tr>
+			</tbody>
 		</table>
-
 		<br>
+		<br>
+		<!-- Assign student to subject -->
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Assign Student to Subject</h5>
+				<br>
+					<div ng-if="errorMsg">
+						<div class="alert alert-danger" role="alert">
+							{{errorMsg}}
+						</div>
+					</div>
+				<br>
 
-		<table class="table">
-			<tr>
-				<th>Subject ID</th>
-				<th>Subject Name</th>
-			</tr>
-			<tr ng-repeat="subject in subjects">
-				<td>{{subject.subjectID}}</td>
-				<td>{{subject.subjectName}}</td>
-				<td></td>
-			</tr>
-		</table>
-
-		<form name="myForm" ng-submit="assignStudentSubject()">
-			<label for="Student">Select Student</label>
-			<select name="Student" id="Student" ng-model="students">
-				<option ng:repeat="student in students" value="{{student.studentID}}">
-					{{student.firstName}} - {{student.lastName}}
-				</option>
-			</select>
-			<label for="Subject">Select Subject</label>
-			<select name="Subject" id="Subject" ng-model="subjects">
-				<option ng:repeat="subject in subjects" value="{{subject.subjectID}}">
-					{{subject.subjectName}}
-				</option>
-			</select>
-			<button type="submit">Assign Subject</button>
-		</form>
+				<form name="myForm" ng-submit="postdata(selected_student.studentID,selected_subject.subjectID)">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="formGroupExampleInput">Student</label>
+						</div>
+						<select class="custom-select" id="formGroupExampleInput" ng-model="selected_student"
+								ng-options="student as student.firstName + ' - '  + student.lastName for student in students">
+						</select>
+					</div>
+					<br>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="formGroupExampleInput2">Subject</label>
+						</div>
+						<select class="custom-select" id="formGroupExampleInput2" ng-model="selected_subject"
+								ng-options="subject as subject.subjectName for subject in subjects">
+						</select>
+					</div>
+					<br>
+					<button type="submit" class="btn btn-primary">Add Subject</button>
+				</form>
+			</div>
+		</div>
 	</div>
-
 </body>
 </html>

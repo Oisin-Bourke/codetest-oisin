@@ -1,5 +1,20 @@
 # Brightflag Code Test - Getting Started & Questions
 
+### Notes:
+
+Greetings Brightflag Software Engineer! 
+
+Just to note, I had not previously used Spring JDBC DATA and had some difficulty mapping my objects to the database as I would have liked.    
+
+I had intended to follow the Domain Driven Design (DDD) approach, as suggested here ['Spring Data JDBC, References, and Aggregates'](https://spring.io/blog/2018/09/24/spring-data-jdbc-references-and-aggregates), 
+although this was not successful without using the `CrudRepository` interface (which would have required a different architecture I believe).
+
+The application works but could have ben much better. Any feedback would be greatly appreciate!
+
+> The final h2 schema is below:
+![schema erd](src/main/resources/images/bf_code_test_erd.png)
+
+
 ### Running the application
 1. Run src/main/com/brightflag/codetest/Application.java as a Spring Boot app
 2. Open [http://localhost:8080/](http://localhost:8080/)
@@ -14,3 +29,5 @@
 ### Extra information
 1. Database schema: src/main/resources/schema.sql
 2. Database data: src/main/resources/data.sql
+
+

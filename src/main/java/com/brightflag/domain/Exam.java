@@ -5,6 +5,15 @@ public class Exam {
 	private Integer examID;
 	private String examName;
 
+	public Exam() {
+
+	}
+
+	public Exam(Integer examID, String examName) {
+		this.examID = examID;
+		this.examName = examName;
+	}
+
 	public Integer getExamID() {
 		return examID;
 	}
