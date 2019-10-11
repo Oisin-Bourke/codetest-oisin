@@ -14,7 +14,7 @@ The application works but could have ben much better. Any feedback would be grea
 *I have not added any dependencies.
 
 > The final h2 schema is below:
-![schema erd](src/main/resources/images/bf_code_test_erd.png)
+![schema erd](src/main/resources/images/codetest_erd.png)
 
 
 ### Running the application
